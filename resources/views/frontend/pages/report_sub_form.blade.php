@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label for="fraudsterName">Fraudster's  name or business name <span class="text-danger">*</span> </label>
                             <input type="text" id="fraudsterName" name="fraudster_name"
-                                placeholder="Enter the profile or business name" required>
+                                placeholder="Enter the fraudster or business name" required>
                         </div>
 
                         <div class="form-group">

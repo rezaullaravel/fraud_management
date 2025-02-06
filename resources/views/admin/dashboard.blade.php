@@ -75,7 +75,7 @@
 
       {{-- fetch latest report --}}
       @php
-          $data = App\Models\FraudMaster::orderBy('id','desc')->get();
+          $data = App\Models\FraudMaster::orderBy('id','desc')->limit(10)->get();
       @endphp
       <div class="row">
         <div class="col-sm-12">
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="card-body">
-                    <table class="table" id="myTable">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Sl</th>
@@ -116,7 +116,7 @@
                                  </td>
                                  <td>{{ $row->contact_info }}</td>
                                  <td>
-                                    <a href="" class="btn btn-primary btn-sm" title="View report"><i class="las la-eye"></i></a>
+                                    <a href="{{ route('admin.report.details',$row->id) }}" class="btn btn-primary btn-sm" title="View report"><i class="las la-eye"></i></a>
                                     <a href="" class="btn btn-danger btn-sm" title="View report"><i class="las la-trash"></i></a>
                                  </td>
                                </tr>

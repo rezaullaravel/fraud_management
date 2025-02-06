@@ -11,4 +11,8 @@ class FraudMaster extends Model
     public function user(){
         return $this->belongsTo(User::class,'user_id');
     }
+
+    public function multiImg(){
+        return $this->hasMany(MultiFile::class,'fraud_master_id');
+    }
 }

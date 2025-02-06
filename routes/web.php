@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ReportSubmitController;
+use App\Http\Controllers\Admin\AllReportController;
 
 
 
@@ -14,9 +15,15 @@ Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 Route::post('/login',[AuthController::class,'postLogin'])->name('post.login');
 
 
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['admin'])->prefix('admin')->group(function () {
 //admin dashboard
-Route::get('/admin/dashboard',[AuthController::class,'adminDashboard'])->name('admin.dashboard');
+Route::get('dashboard',[AuthController::class,'adminDashboard'])->name('admin.dashboard');
+
+//all report
+Route::get('all/report',[AllReportController::class,'index'])->name('admin.report.index');
+Route::get('details/report/{id}',[AllReportController::class,'reportDetails'])->name('admin.report.details');
+Route::get('show/report/{id}',[AllReportController::class,'reportShow'])->name('admin.report.show');
+Route::get('hide/report/{id}',[AllReportController::class,'reportHide'])->name('admin.report.hide');
 });
 
 
